@@ -1,0 +1,60 @@
+
+<div class="content" role="main">
+
+  <div class="row live-status text-center">
+    <span [className]="generator.isRefreshTable ? 'status-light show' : 'status-light'">LIVE</span>
+  </div>
+  <div class="row code">
+    <label class="pl-sm-5 pr-sm-5">YOUR CODE NOW: {{generator.code}}</label>
+  </div>
+  <div class="row input-group">
+    <div class="col-sm-3 col-6 p-sm-0 mb-sm-0 mb-3">
+      <div class="row payment">
+        <label>PAYMENT</label>
+        <input id="payment" type="text" class="form-control ng-pristine ng-valid ng-touched" placeholder="Payment"
+          autocomplete="off" aria-autocomplete="list" aria-expanded="false" autocapitalize="off" autocorrect="off" role="combobox"
+          aria-multiline="false" [(ngModel)]="payment_name">
+      </div>
+    </div>
+    <div class="col-sm-3 col-6 p-sm-0 mb-sm-0 mb-3">
+      <div class="row ammount">
+        <label>AMMOUNT</label>
+        <input id="amount" type="number" class="form-control ng-pristine ng-valid ng-touched" placeholder="Ammount" [(ngModel)]="payment_amount">
+      </div>
+    </div>
+    <div class="col-sm-auto col add">
+      <button type="button" class="btn btn-secondary" (click)="addPayment()" [disabled]="!generator.isStarted">+ ADD</button>
+    </div>
+  </div>
+
+  <div class="row w-100">
+    <label class="table-label">PAYMENT LIST</label>
+    <div class="row payment-table table-responsive">
+      <table class="table table-hover table-bordered table-curved">
+        <thead>
+          <tr>
+            <th width="70%">Name</th>
+            <th width="10%">AMMOUNT</th>
+            <th width="10%">CODE</th>
+            <th width="10%">GRID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of paymentList; let i = index">
+            <td>{{ item.name }}</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.code }}</td>
+            <td>{{ item.grid }}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
